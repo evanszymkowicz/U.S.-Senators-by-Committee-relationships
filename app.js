@@ -4,7 +4,7 @@ d3.csv('./data.csv', function (d, i, headers) {
     name: d.name,
     party: d.party,
     committes: committees,
-  }
+  };
 }, function (error, nodes) {
     if (error) throw error;
 
@@ -48,9 +48,9 @@ d3.csv('./data.csv', function (d, i, headers) {
     setUpCheckboxes(nodes.columns.slice(2));
 
     function graph(nodeData, linkData) {
-      var partyID = d3.scaleOrdinal()
+      var partyScale = d3.scaleOrdinal()
                       .domain(["D", "R", "I"])
-                      .range (["Blue", "Red", "#ccc"]
+                      .range (["blue", "red", "#ccc"]
                     );
       var nodeUpdate = nodeGp
           .selectAll("circle")
@@ -64,7 +64,7 @@ d3.csv('./data.csv', function (d, i, headers) {
           .enter()
           .append("circle")
             .attr("r", 15)
-            .attr("fill", d => partyID(d.party))
+            .attr("fill", d => partyScale(d.party))
             .attr("stroke", "white")
             .attr("stroke-width", 3);
             .call(d3.drag()
@@ -135,7 +135,7 @@ d3.csv('./data.csv', function (d, i, headers) {
           .style("opacity", 1)
           .style("left", (d3.event.x - tooltip.node().offsetWidth / 2) + "px")
           .html(() => {
-            var committees = d.committees.map(c => '<li>${c}</li>').join('')
+            var committees = d.committees.map(c => `<li>${c}</li>`).join('')
             return `
                 <p>${d.name} (${d.party})</p>
                 <p>Committees</p>
@@ -186,4 +186,5 @@ d3.csv('./data.csv', function (d, i, headers) {
       }
     }
     return links;
+  }
 });
