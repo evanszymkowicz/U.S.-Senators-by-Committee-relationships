@@ -8,7 +8,7 @@ All committees selected:
 ![100 Senators](screenshots/allselected.PNG)
 
 Shared committees:
-![Shared](screenshotes/onecommittee.PNG)
+![Shared](screenshots/onecommittee.PNG)
 
 Selecting one senator:
-![Sheldon Whitehouse](Whitehouse.PNG)
+![Sheldon Whitehouse](screenshots/Whitehouse.PNG)
